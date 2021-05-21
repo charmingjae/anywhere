@@ -52,6 +52,8 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
 
         //카메라를 여의도 위치로 옮긴다.
         mMap.moveCamera(CameraUpdateFactory.newLatLng(seoul));
+
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
     }
 
 
