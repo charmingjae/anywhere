@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50px"
+        android:layout_marginTop="130dp"
         android:text="ANYWHERE"
         android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,5 +18,24 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_gravity="center"/>
+
+
+    <Button
+        android:id="@+id/btnGoLogin"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="250dp"
+        android:text="로그인"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/black"/>
+
+    <Button
+        android:id="@+id/btnGoRegister"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:text="회원가입"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/black"/>
 
 </LinearLayout>
