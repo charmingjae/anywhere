@@ -17,7 +17,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:textColor="@color/black"/>
 
 
     <Button
@@ -25,17 +26,17 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="250dp"
-        android:text="로그인"
+        android:text="Login"
         android:layout_gravity="center"
-        android:backgroundTint="@color/black"/>
+        android:backgroundTint="@color/anywhereColor"/>
 
     <Button
         android:id="@+id/btnGoRegister"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:text="회원가입"
+        android:text="Register"
         android:layout_gravity="center"
-        android:backgroundTint="@color/black"/>
+        android:backgroundTint="@color/anywhereColor"/>
 
 </LinearLayout>

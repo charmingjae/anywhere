@@ -42,6 +42,6 @@
         android:text="Login"
         android:textSize="15dp"
         android:textStyle="bold"
-        app:backgroundTint="@color/black"/>
+        app:backgroundTint="@color/anywhereColor"/>
 
 </LinearLayout>

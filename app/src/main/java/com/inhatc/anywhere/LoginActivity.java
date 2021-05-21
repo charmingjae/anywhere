@@ -7,10 +7,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,7 +24,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import static android.content.ContentValues.TAG;
 
 public class LoginActivity extends AppCompatActivity {
-
     // Hwi
     // initialize Authentication
     private FirebaseAuth mAuth;
@@ -29,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText Phone;
     @Override
     protected void onCreate(Bundle savedInstanceState){
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Hwi
@@ -53,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    
 
     // Hwi
     // Login Method
