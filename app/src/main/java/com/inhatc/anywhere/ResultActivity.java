@@ -2,20 +2,30 @@ package com.inhatc.anywhere;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class ResultActivity extends AppCompatActivity {
 
-    ArrayList<SampleData> movieDataList;
+    ArrayList<SampleData> busDataList;
+    private List<SampleData> list;
+    private SearchView editSearch;        // 검색어를 입력할 Input 창
+    private MyAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +34,18 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultlist);
 
-        this.InitializeMovieData();
+        editSearch = (SearchView) findViewById(R.id.searchView);
+        // 리스트를 생성한다.
+        list = new ArrayList<SampleData>();
+        BusList();
+
+        busDataList = new ArrayList<SampleData>();
+        busDataList.addAll(list);
 
         ListView listView = (ListView)findViewById(R.id.lstSearchResult);
-        final MyAdapter myAdapter = new MyAdapter(this, movieDataList);
+        myAdapter = new MyAdapter(this, busDataList);
 
         listView.setAdapter(myAdapter);
-
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -46,14 +61,60 @@ public class ResultActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
+
+        // input창에 검색어를 입력시 "setOnQueryTextListener" 이벤트 리스너를 정의한다.
+        editSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String text) {
+                // input창에 문자를 입력할때마다 호출된다.
+                // search 메소드를 호출한다.
+                search(text);
+                return false;
+            }
+        });
+
+
     }
 
-    public void InitializeMovieData()
-    {
-        movieDataList = new ArrayList<SampleData>();
+    
+    @Override
+    public void onStart() {
+        super.onStart();
+        Intent myIntent = getIntent();
+        search(myIntent.getStringExtra("Search Data"));
+    }
 
-        movieDataList.add(new SampleData("9200","인천 광역버스"));
-        movieDataList.add(new SampleData("641","간선버스"));
-        movieDataList.add(new SampleData("6411","지선버스"));
+
+    // 검색을 수행하는 메소드
+    public void search(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        busDataList.clear();
+        if (charText.length() == 0) {
+            busDataList.addAll(list);
+        } else {
+            for (int i = 0;i < list.size(); i++) {
+                if (list.get(i).getBusNumber().toLowerCase().contains(charText)) {
+                    busDataList.add(list.get(i));
+                }
+            }
+        }
+        myAdapter.notifyDataSetChanged();
+    }
+
+
+    // 검색에 사용될 데이터를 리스트에 추가한다.
+    private void BusList(){
+
+        list.add(new SampleData("9200","인천 광역버스"));
+        list.add(new SampleData("999","은하철도"));
+        list.add(new SampleData("641","간선버스"));
+        list.add(new SampleData("6411","지선버스"));
     }
 }
