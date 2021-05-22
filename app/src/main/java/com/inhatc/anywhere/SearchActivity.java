@@ -3,11 +3,13 @@ package com.inhatc.anywhere;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,6 +19,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class SearchActivity extends AppCompatActivity implements OnMapReadyCallback{
 
@@ -55,9 +63,45 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
         // 구글 맵 객체를 불러온다.
         mMap = googleMap;
+
+
+        // Firebase
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
+        Query query = reference.child("stop");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for(DataSnapshot issue : snapshot.getChildren()){
+                        Log.i("Issues : ", issue.child("xloc").getValue().toString());
+                        Log.i("Issues : ", issue.child("yloc").getValue().toString());
+                        Log.i("Issues : ", issue.child("name").getValue().toString());
+
+                        double yloc = Double.parseDouble(issue.child("yloc").getValue().toString());
+                        double xloc = Double.parseDouble(issue.child("xloc").getValue().toString());
+                        String name = issue.child("name").getValue().toString();
+
+                        MarkerOptions markerOptions = new MarkerOptions();
+
+                        markerOptions.position(new LatLng(yloc, xloc)).title(name);
+
+                        mMap.addMarker(markerOptions);
+
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         // 서울 여의도에 대한 위치 설정
         LatLng seoul = new LatLng(37.52487, 126.92723);
@@ -74,7 +118,7 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         //카메라를 여의도 위치로 옮긴다.
         mMap.moveCamera(CameraUpdateFactory.newLatLng(seoul));
 
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
     }
 
 
