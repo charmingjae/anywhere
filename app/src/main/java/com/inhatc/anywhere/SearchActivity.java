@@ -40,6 +40,7 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
             @Override
             public boolean onQueryTextSubmit(String query) {
                 startActivity(new Intent(getApplicationContext(), ResultActivity.class));
+                Toast.makeText(SearchActivity.this, "검색 처리됨 : " + query, Toast.LENGTH_SHORT).show();
                 return true;
             }
 
@@ -49,6 +50,7 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
             }
         });
     }
+
 
 
     @Override
