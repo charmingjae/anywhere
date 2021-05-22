@@ -3,7 +3,7 @@ package com.inhatc.anywhere;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.SearchView;
@@ -18,15 +18,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class SearchActivity extends AppCompatActivity implements OnMapReadyCallback{
 
@@ -41,22 +32,15 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         setContentView(R.layout.activity_search);
 
         searchView = (SearchView)findViewById(R.id.searchView);
-
         // SupportMapFragment을 통해 레이아웃에 만든 fragment의 ID를 참조하고 구글맵을 호출한다.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this); //getMapAsync must be called on the main thread.
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                startActivity(new Intent(getApplicationContext(), ResultActivity.class));
-                Toast.makeText(SearchActivity.this, "검색 처리됨 : " + query, Toast.LENGTH_SHORT).show();
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchActivity.this, ResultActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -85,6 +69,9 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         mMap.moveCamera(CameraUpdateFactory.newLatLng(seoul));
 
         mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
-
     }
+
+
+
+
 }

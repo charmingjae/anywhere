@@ -7,13 +7,13 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register Activity"
-        android:textSize="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:textColor="@color/black"/>
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Register"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:background="@color/anywhereColor" />
     
     <TextView
         android:layout_width="300dp"
@@ -75,8 +75,8 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:text="증명서류 첨부"
-        android:backgroundTint="@color/black"
+        android:text="Attach proof documents"
+        android:backgroundTint="@color/anywhereColor"
         android:textCursorDrawable="@color/black"/>
 
     <ImageView
