@@ -37,6 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:text=""
                 android:textSize="35dp"
                 android:textColor="#7f7f7f"
                 android:layout_marginTop="10dp"/>
@@ -60,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:text=""
                 android:gravity="center"
                 android:textColor="#7f7f7f"
                 android:textSize="20dp" />
@@ -78,6 +80,7 @@
                 android:textSize="35dp"
                 android:textColor="@color/black" />
             <TextView
+                android:id="@+id/txtDropOff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

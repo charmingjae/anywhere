@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ReservationActivity extends AppCompatActivity {
 
-    Button doReservation = (Button)findViewById(R.id.btnReservation);
+    Button doReservation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -23,13 +23,18 @@ public class ReservationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rservation);
 
+        doReservation = (Button)findViewById(R.id.btnReservation);
+
         //sm
         TextView txtBusStop = (TextView)findViewById(R.id.txtBusStop);
         TextView txtBusNum = (TextView)findViewById(R.id.txtBusNum);
+        TextView txtDropOff = (TextView)findViewById(R.id.txtDropOff);
         Intent intent = getIntent();
         String stopData = intent.getStringExtra("stopname");
         String busData = intent.getStringExtra("busnum");
+        String dropoff = intent.getStringExtra("dropoff");
         txtBusStop.setText(stopData);
         txtBusNum.setText(busData);
+        txtDropOff.setText(dropoff);
     }
 }

@@ -23,10 +23,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ResultSecondActivity extends AppCompatActivity {
+public class ResultThirdActivity extends AppCompatActivity {
 
     ArrayList<SampleData> busDataList;
-    ArrayList<SampleData> list;
+    ArrayList<SampleData> lists;
     private SearchView editSearch;        // 검색어를 입력할 Input 창
     MyAdapter myAdapter;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -39,21 +39,22 @@ public class ResultSecondActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resultlist_second);
+        setContentView(R.layout.activity_resultlist_third);
 
         // 넘겨온 버스 번호 가져오기
         Intent intent = getIntent();
         String busNum = intent.getStringExtra("busnum");
+        String stopName = intent.getStringExtra("stopname");
         Log.i("BUS NUM : ", busNum);
 
         this.StopList();
 
-        Log.i("list size : ", String.valueOf(list.size()));
+        Log.i("list size : ", String.valueOf(lists.size()));
 
 
 
-        ListView listView = (ListView)findViewById(R.id.lstSearchResult_second);
-        myAdapter = new MyAdapter(this, list);
+        ListView listView = (ListView)findViewById(R.id.lstSearchResult_third);
+        myAdapter = new MyAdapter(this, lists);
 
         listView.setAdapter(myAdapter);
 
@@ -69,9 +70,10 @@ public class ResultSecondActivity extends AppCompatActivity {
 
                 // Minjae
                 // 온클릭 시 일단 예약 레이아웃으로 넘어가게 설정
-                Intent intent = new Intent(ResultSecondActivity.this, ResultThirdActivity.class);
+                Intent intent = new Intent(ResultThirdActivity.this, ReservationActivity.class);
                 intent.putExtra("busnum", busNum);
-                intent.putExtra("stopname", myAdapter.getItem(position).getBusNumber());
+                intent.putExtra("stopname", stopName);
+                intent.putExtra("dropoff", myAdapter.getItem(position).getBusNumber());
                 startActivity(intent);
                 finish();
             }
@@ -129,7 +131,8 @@ public class ResultSecondActivity extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
         Query query = reference.child("stop");
-        list = new ArrayList<SampleData>();
+        lists = new ArrayList<SampleData>();
+//        lists.add(new SampleData("dddd",""));
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -139,12 +142,12 @@ public class ResultSecondActivity extends AppCompatActivity {
 
                         String name = issue.child("name").getValue().toString();
 
-                        Log.i("RETURN VALUE NAME : ", name);
+                        Log.w("THIRD RETURN VALUE NAME : ", name);
 
-                        list.add(new SampleData(name,""));
+                        lists.add(new SampleData(name,""));
 
                     }
-                }
+                }myAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -161,7 +164,7 @@ public class ResultSecondActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.child("bus").getChildren()) {
                     Log.d("ResultActivity", "Single ValueEventListener : " + snapshot.child("name").getValue());
-                    list.add(new SampleData(snapshot.child("num").getValue().toString(),snapshot.child("type").getValue().toString()));
+                    lists.add(new SampleData(snapshot.child("num").getValue().toString(),snapshot.child("type").getValue().toString()));
                 }
             }
 
