@@ -44,10 +44,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Minjae
-        // 'Register' 버튼 클릭 시 로그인 화면으로 이동
+        // 'Register' 버튼 클릭 시 회원가입 화면으로 이동
         goRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intent);
             }

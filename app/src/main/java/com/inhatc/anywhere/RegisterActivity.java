@@ -91,15 +91,15 @@ public class RegisterActivity extends AppCompatActivity {
                 // Hwi
                 // firebase 정의
                 mDatabase = FirebaseDatabase.getInstance().getReference();
-                mDatabase.child("user").push().setValue(result);
+                mDatabase.child("test").child("subtest").push().setValue(result);
                 uploadFile();
                 // Hwi
                 // Make Toast
                 Toast.makeText(RegisterActivity.this, "I'll let you know after the administrator approves it.",
                         Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                //startActivity(intent);
             }
         });
 
