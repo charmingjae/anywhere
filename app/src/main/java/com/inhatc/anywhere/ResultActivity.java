@@ -50,6 +50,11 @@ public class ResultActivity extends AppCompatActivity {
         //Intent myIntent = getIntent();
         //search(myIntent.getStringExtra("Search Data"));
         //editSearch.setQuery(myIntent.getStringExtra("Search Data"),false);
+
+
+        editSearch.setFocusable(true);
+        editSearch.setIconified(false);
+        editSearch.requestFocusFromTouch();
         // 리스트를 생성한다.
         list = new ArrayList<SampleData>();
         BusList();
@@ -66,9 +71,9 @@ public class ResultActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id){
-//                Toast.makeText(getApplicationContext(),
-//                        myAdapter.getItem(position).getBusNumber(),
-//                        Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),
+                        myAdapter.getItem(position).getBusNumber(),
+                        Toast.LENGTH_LONG).show();
 
                 //sm
                 //값과 함께 intent 전송
@@ -141,10 +146,8 @@ public class ResultActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
-
     }
     private void BusList(){
         FirebaseDatabase.getInstance().getReference().addListenerForSingleValueEvent(new ValueEventListener() {
@@ -152,6 +155,7 @@ public class ResultActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.child("bus").getChildren()) {
                     Log.d("ResultActivity", "Single ValueEventListener : " + snapshot.child("name").getValue());
+//                    list.add(new SampleData(snapshot.child("num").getValue().toString(),snapshot.child("type").getValue().toString()));
                     list.add(new SampleData(snapshot.child("num").getValue().toString(),snapshot.child("type").getValue().toString()));
                 }
             }

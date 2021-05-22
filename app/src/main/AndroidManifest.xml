@@ -29,6 +29,7 @@
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".ResultActivity"></activity>
         <activity android:name=".ReservationActivity"></activity>
+        <activity android:name=".ResultSecondActivity"></activity>
     </application>
 
 </manifest>
