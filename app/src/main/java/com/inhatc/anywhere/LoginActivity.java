@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         // Hwi
         // Get Auth Instance
         mAuth = FirebaseAuth.getInstance();
-        
+
         // Hwi
         // Button components
         Button DoLogin = (Button) findViewById(R.id.btnDoLogin);
