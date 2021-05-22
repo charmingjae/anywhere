@@ -43,7 +43,7 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         searchView = (SearchView)findViewById(R.id.searchView);
-        
+
         // SupportMapFragment을 통해 레이아웃에 만든 fragment의 ID를 참조하고 구글맵을 호출한다.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this); //getMapAsync must be called on the main thread.
@@ -124,7 +124,6 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         //액티비티를 종료할 때 애니메이션 없애기
         overridePendingTransition(0,0);
     }
-
 
 
 

@@ -86,12 +86,14 @@
                 android:textColor="#7f7f7f"
                 android:layout_marginTop="10dp"/>
         </LinearLayout>
+
         <Button
+            android:id="@+id/btnReservation"
             android:layout_width="300dp"
             android:layout_height="70dp"
             android:layout_marginTop="70dp"
+            android:backgroundTint="@color/anywhereColor"
             android:text="Reservation"
-            android:textSize="25dp"
-            android:backgroundTint="@color/anywhereColor" />
+            android:textSize="25dp" />
     </LinearLayout>>
 </LinearLayout>
