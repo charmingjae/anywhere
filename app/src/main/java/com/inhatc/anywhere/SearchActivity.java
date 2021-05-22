@@ -3,6 +3,7 @@ package com.inhatc.anywhere;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.SearchView;
@@ -31,24 +32,15 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         setContentView(R.layout.activity_search);
 
         searchView = (SearchView)findViewById(R.id.searchView);
-
         // SupportMapFragment을 통해 레이아웃에 만든 fragment의 ID를 참조하고 구글맵을 호출한다.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this); //getMapAsync must be called on the main thread.
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                Intent getSearch = new Intent(SearchActivity.this, ResultActivity.class);
-                getSearch.putExtra("Search Data",query);
-                startActivity(getSearch);
-
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchActivity.this, ResultActivity.class);
+                startActivity(intent);
             }
         });
     }
