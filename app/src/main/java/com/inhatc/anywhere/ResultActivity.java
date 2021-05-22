@@ -75,10 +75,14 @@ public class ResultActivity extends AppCompatActivity {
                         myAdapter.getItem(position).getBusNumber(),
                         Toast.LENGTH_LONG).show();
 
-                // Minjae
-                // 온클릭 시 일단 예약 레이아웃으로 넘어가게 설정
-                startActivity(new Intent(ResultActivity.this, ResultSecondActivity.class));
+                //sm
+                //값과 함께 intent 전송
+                Intent intent = new Intent(ResultActivity.this, ReservationActivity.class);
+                intent.putExtra("stop", "여기다 정류장값 넣으시죠*^^*");
+                intent.putExtra("bus", "여기다 버스 넣으시죠*^^*");
+                startActivity(intent);
                 finish();
+                
             }
         });
 
