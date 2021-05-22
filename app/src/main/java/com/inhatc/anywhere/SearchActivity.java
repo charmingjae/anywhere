@@ -39,8 +39,10 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                startActivity(new Intent(getApplicationContext(), ResultActivity.class));
-                Toast.makeText(SearchActivity.this, "검색 처리됨 : " + query, Toast.LENGTH_SHORT).show();
+                Intent getSearch = new Intent(SearchActivity.this, ResultActivity.class);
+                getSearch.putExtra("Search Data",query);
+                startActivity(getSearch);
+
                 return true;
             }
 
