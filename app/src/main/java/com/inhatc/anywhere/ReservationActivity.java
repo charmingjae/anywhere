@@ -67,14 +67,6 @@ public class ReservationActivity extends AppCompatActivity {
                 //dialog 띄움
                 showDialog();
 
-               /* //원래 작동되는 것
-                Intent intent = new Intent(ReservationActivity.this, MyPageActivity.class);
-                intent.putExtra("bus",busData);
-                intent.putExtra("depart",stopData);
-                intent.putExtra("arrive",busArrive);
-                startActivity(intent);
-                finish();*/
-
             }
         });
 
