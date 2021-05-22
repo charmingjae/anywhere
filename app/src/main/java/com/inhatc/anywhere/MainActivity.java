@@ -53,5 +53,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    // Hwi
+    // Check auth on Activity start and Auto Login
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(MainActivity.this, SearchActivity.class));
+            finish();
+        }
+    }
 
 }
