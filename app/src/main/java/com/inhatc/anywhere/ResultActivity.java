@@ -50,6 +50,11 @@ public class ResultActivity extends AppCompatActivity {
         //Intent myIntent = getIntent();
         //search(myIntent.getStringExtra("Search Data"));
         //editSearch.setQuery(myIntent.getStringExtra("Search Data"),false);
+
+
+        editSearch.setFocusable(true);
+        editSearch.setIconified(false);
+        editSearch.requestFocusFromTouch();
         // 리스트를 생성한다.
         list = new ArrayList<SampleData>();
         BusList();
