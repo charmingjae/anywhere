@@ -1,9 +1,12 @@
 package com.inhatc.anywhere;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +21,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class SearchActivity extends AppCompatActivity implements OnMapReadyCallback{
 
     GoogleMap mMap;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -26,9 +30,24 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        searchView = (SearchView)findViewById(R.id.searchView);
+
         // SupportMapFragment을 통해 레이아웃에 만든 fragment의 ID를 참조하고 구글맵을 호출한다.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this); //getMapAsync must be called on the main thread.
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                startActivity(new Intent(getApplicationContext(), ResultActivity.class));
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
 
@@ -55,6 +74,8 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
 
         mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
     }
+
+
 
 
 }
