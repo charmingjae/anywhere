@@ -45,6 +45,11 @@ public class ResultSecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultlist_second);
 
+        // 넘겨온 버스 번호 가져오기
+        Intent intent = getIntent();
+        String busNum = intent.getStringExtra("busnum");
+        Log.i("BUS NUM : ", busNum);
+
         this.StopList();
 
         Log.i("list size : ", String.valueOf(list.size()));
@@ -68,7 +73,10 @@ public class ResultSecondActivity extends AppCompatActivity {
 
                 // Minjae
                 // 온클릭 시 일단 예약 레이아웃으로 넘어가게 설정
-                startActivity(new Intent(ResultSecondActivity.this, ReservationActivity.class));
+                Intent intent = new Intent(ResultSecondActivity.this, ReservationActivity.class);
+                intent.putExtra("busnum", busNum);
+                intent.putExtra("stopname", myAdapter.getItem(position).getBusNumber());
+                startActivity(intent);
                 finish();
             }
         });

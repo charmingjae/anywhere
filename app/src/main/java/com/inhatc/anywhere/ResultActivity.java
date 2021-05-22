@@ -77,7 +77,12 @@ public class ResultActivity extends AppCompatActivity {
 
                 // Minjae
                 // 온클릭 시 일단 예약 레이아웃으로 넘어가게 설정
-                startActivity(new Intent(ResultActivity.this, ResultSecondActivity.class));
+                // 액티비티 간 값 전송을 위해 Intent 개별 생성
+                Intent intent = new Intent(ResultActivity.this, ResultSecondActivity.class);
+                // intent에 putExtra로 busnumber pass
+                intent.putExtra("busnum",  myAdapter.getItem(position).getBusNumber());
+                // start activity
+                startActivity(intent);
                 finish();
             }
         });
