@@ -21,8 +21,8 @@ public class ReservationActivity extends AppCompatActivity {
         TextView txtBusStop = (TextView)findViewById(R.id.txtBusStop);
         TextView txtBusNum = (TextView)findViewById(R.id.txtBusNum);
         Intent intent = getIntent();
-        String stopData = intent.getExtras().getString("stop");
-        String busData = intent.getExtras().getString("bus");
+        String stopData = intent.getStringExtra("stopname");
+        String busData = intent.getStringExtra("busnum");
         txtBusStop.setText(stopData);
         txtBusNum.setText(busData);
     }

@@ -78,9 +78,8 @@ public class ResultActivity extends AppCompatActivity {
 
                 //sm
                 //값과 함께 intent 전송
-                Intent intent = new Intent(ResultActivity.this, ReservationActivity.class);
-                intent.putExtra("stop", "여기다 정류장값 넣으시죠*^^*");
-                intent.putExtra("bus", "여기다 버스 넣으시죠*^^*");
+                Intent intent = new Intent(ResultActivity.this, ResultSecondActivity.class);
+                intent.putExtra("busnum", myAdapter.getItem(position).getBusNumber());
                 startActivity(intent);
                 finish();
                 
