@@ -9,7 +9,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
+
+    // Hwi
+    // initialize Authentication
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Hwi
+        // Get Auth Instance
+        mAuth = FirebaseAuth.getInstance();
 
         // Minjae
         // Button components
@@ -43,5 +52,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    // Hwi
+    // Check auth on Activity start and Auto Login
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(MainActivity.this, SearchActivity.class));
+            finish();
+        }
     }
 }
