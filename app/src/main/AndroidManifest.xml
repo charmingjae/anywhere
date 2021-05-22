@@ -27,11 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".ReservationActivity" />
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".ReservationActivity"></activity>
+        <activity android:name=".ResultSecondActivity"></activity>
     </application>
 
 </manifest>

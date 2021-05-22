@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     // Hwi
     // Check auth on Activity start and Auto Login
 
@@ -66,4 +65,5 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
+
 }

@@ -102,13 +102,13 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
 
 
         // 서울 여의도에 대한 위치 설정
-        LatLng seoul = new LatLng(37.52487, 126.92723);
+        LatLng seoul = new LatLng(37.5415907888067, 126.97102308118481);
 
         // 구글 맵에 표시할 마커에 대한 옵션 설정
         MarkerOptions makerOptions = new MarkerOptions();
         makerOptions
                 .position(seoul)
-                .title("원하는 위치(위도, 경도)에 마커를 표시했습니다.");
+                .title("현재 내 위치");
 
         // 마커를 생성한다.
         mMap.addMarker(makerOptions);
