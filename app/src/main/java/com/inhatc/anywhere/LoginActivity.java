@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        String phone = Phone.getText().toString() + "@naver.com";
+        String phone = Phone.getText().toString() + "@user.com";
         String password = "test1234";
 
         mAuth.signInWithEmailAndPassword(phone, password)

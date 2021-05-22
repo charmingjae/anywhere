@@ -71,9 +71,9 @@ public class ResultActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id){
-//                Toast.makeText(getApplicationContext(),
-//                        myAdapter.getItem(position).getBusNumber(),
-//                        Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),
+                        myAdapter.getItem(position).getBusNumber(),
+                        Toast.LENGTH_LONG).show();
 
                 // Minjae
                 // 온클릭 시 일단 예약 레이아웃으로 넘어가게 설정
@@ -151,6 +151,7 @@ public class ResultActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.child("bus").getChildren()) {
                     Log.d("ResultActivity", "Single ValueEventListener : " + snapshot.child("name").getValue());
+//                    list.add(new SampleData(snapshot.child("num").getValue().toString(),snapshot.child("type").getValue().toString()));
                     list.add(new SampleData(snapshot.child("num").getValue().toString(),snapshot.child("type").getValue().toString()));
                 }
             }
