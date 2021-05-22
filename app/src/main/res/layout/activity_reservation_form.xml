@@ -23,12 +23,11 @@
         android:layout_marginLeft="40dp" />
 
     <TextView
-        android:id="@+id/txtBusNum"
+        android:id="@+id/txtBus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="10dp"
-        android:text="511"
         android:textColor="@color/black"
         android:textSize="30dp" />
     <TextView
@@ -46,7 +45,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="10dp"
-        android:text="Back Gate of Inha University"
         android:textColor="@color/black"
         android:textSize="25dp" />
 
@@ -65,7 +63,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="10dp"
-        android:text="Juan Station Transfer Stop"
         android:textColor="@color/black"
         android:textSize="25dp" />
     <LinearLayout

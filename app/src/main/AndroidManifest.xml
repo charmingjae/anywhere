@@ -13,9 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Anywhere">
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/network_security_config" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
@@ -27,12 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".SearchActivity"></activity>
-        <activity android:name=".ResultActivity"></activity>
-        <activity android:name=".ReservationActivity"></activity>
-        <activity android:name=".ResultSecondActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".ResultActivity" />
+        <activity android:name=".ReservationActivity" />
+        <activity android:name=".ResultSecondActivity" />
+        <activity android:name=".MyPageActivity" />
     </application>
 
 </manifest>
