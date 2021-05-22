@@ -31,7 +31,6 @@
         <activity android:name=".ResultActivity"></activity>
         <activity android:name=".ReservationActivity"></activity>
         <activity android:name=".ResultSecondActivity"></activity>
-        <!--sm-->
         <activity android:name=".MyPageActivity"></activity>
     </application>
 
