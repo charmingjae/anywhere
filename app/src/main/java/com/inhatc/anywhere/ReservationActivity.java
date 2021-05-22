@@ -17,8 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ReservationActivity extends AppCompatActivity {
 
     Button doReservation;
-<<<<<<< HEAD
-=======
+
 
     //sm
     String stopData;
@@ -26,7 +25,6 @@ public class ReservationActivity extends AppCompatActivity {
     String busArrive;
     Dialog checkDialog;
 
->>>>>>> 2b1244e1b2e5335e02dcf5b5e759b5e8a11f6754
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -39,17 +37,6 @@ public class ReservationActivity extends AppCompatActivity {
 
         //sm
         TextView txtBusStop = (TextView)findViewById(R.id.txtBusStop);
-<<<<<<< HEAD
-        TextView txtBusNum = (TextView)findViewById(R.id.txtBusNum);
-        TextView txtDropOff = (TextView)findViewById(R.id.txtDropOff);
-        Intent intent = getIntent();
-        String stopData = intent.getStringExtra("stopname");
-        String busData = intent.getStringExtra("busnum");
-        String dropoff = intent.getStringExtra("dropoff");
-        txtBusStop.setText(stopData);
-        txtBusNum.setText(busData);
-        txtDropOff.setText(dropoff);
-=======
         TextView txtBusNum = (TextView)findViewById(R.id.txtBus);
         TextView txtBusArrive = (TextView)findViewById(R.id.txtBusArrive);
         Button btnReservation = (Button)findViewById(R.id.btnReservation);
@@ -58,9 +45,7 @@ public class ReservationActivity extends AppCompatActivity {
         Intent intent = getIntent();
         stopData = intent.getStringExtra("stopname");
         busData = intent.getStringExtra("busnum");
-
-        //임의의 도착 예정지
-        busArrive = "이태원역";
+        busArrive = intent.getStringExtra("dropoff");
         
         //예약할 정보들을 화면에 띄움
         txtBusStop.setText(stopData);
@@ -77,7 +62,6 @@ public class ReservationActivity extends AppCompatActivity {
         btnReservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 //dialog 띄움
                 showDialog();
 
@@ -124,7 +108,5 @@ public class ReservationActivity extends AppCompatActivity {
                 finish();
             }
         });
-
->>>>>>> 2b1244e1b2e5335e02dcf5b5e759b5e8a11f6754
     }
 }

@@ -80,11 +80,7 @@
                 android:textSize="35dp"
                 android:textColor="@color/black" />
             <TextView
-<<<<<<< HEAD
-                android:id="@+id/txtDropOff"
-=======
                 android:id="@+id/txtBusArrive"
->>>>>>> 2b1244e1b2e5335e02dcf5b5e759b5e8a11f6754
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
