@@ -7,28 +7,60 @@
 
     <TextView
         android:id="@+id/textView"
+        android:layout_width="277dp"
+        android:layout_height="71dp"
+        android:background="@color/anywhereColor"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Are you sure want to a reservation?"
+        android:textColor="@color/white" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:text="정말로 예약하시겠습니까?" />
-
+        android:gravity="center"
+        android:text="Departure Bus Number"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:id="@+id/txtFinalBus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp" />
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Plattform"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/txtFinalStop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp" />
+        android:text=""
+        android:gravity="center"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Destination"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/txtFinalArrive"
-        android:layout_width="217dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp" />
+        android:text=""
+        android:gravity="center"
+        android:textColor="@color/black" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,16 +69,18 @@
         <Button
             android:id="@+id/noBtn"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="아니오" />
+            android:backgroundTint="@color/cardview_dark_background"
+            android:text="No" />
 
         <Button
             android:id="@+id/yesBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="네" />
+            android:backgroundTint="@color/anywhereColor"
+            android:text="Yes" />
     </LinearLayout>
 
 </LinearLayout>

@@ -24,12 +24,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".ResultActivity" />
         <activity android:name=".ReservationActivity" />
         <activity android:name=".ResultSecondActivity" />
+        <activity android:name=".ResultThirdActivity"/>
         <activity android:name=".MyPageActivity" />
     </application>
 

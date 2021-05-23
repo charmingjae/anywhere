@@ -102,7 +102,7 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
 
 
         // 서울 여의도에 대한 위치 설정
-        LatLng seoul = new LatLng(37.5415907888067, 126.97102308118481);
+        LatLng seoul = new LatLng(37.54294659009609, 126.96270657538915);
 
         // 구글 맵에 표시할 마커에 대한 옵션 설정
         MarkerOptions makerOptions = new MarkerOptions();
@@ -116,7 +116,7 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         //카메라를 여의도 위치로 옮긴다.
         mMap.moveCamera(CameraUpdateFactory.newLatLng(seoul));
 
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
     }
     @Override
     protected void onPause() {

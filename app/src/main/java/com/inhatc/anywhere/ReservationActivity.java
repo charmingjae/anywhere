@@ -104,6 +104,7 @@ public class ReservationActivity extends AppCompatActivity {
                 intent.putExtra("bus",busData);
                 intent.putExtra("depart",stopData);
                 intent.putExtra("arrive",busArrive);
+                checkDialog.dismiss();
                 startActivity(intent);
                 finish();
             }
