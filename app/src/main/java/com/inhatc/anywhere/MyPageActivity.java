@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,6 +60,7 @@ public class MyPageActivity extends AppCompatActivity {
         txtDepart.setText(depart);
         txtArrive.setText(arrive);
 
+        rideStatusChange();
 
         // Minjae
         // dialog
@@ -120,6 +122,46 @@ public class MyPageActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.e(TAG, "onCancelled", databaseError.toException());
+            }
+        });
+    }
+
+    private void rideStatusChange() {
+        phone = mAuth.getCurrentUser().getEmail();
+        phone = phone.substring(0, 11);
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        Log.d("rsc","start log");
+        Query query = reference.child("res").orderByChild("phone").equalTo(phone);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot issue : snapshot.getChildren()) {
+                    Log.d("rsc","hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh1323513");
+                    Query query_status = issue.getRef().child("status").equalTo("wait");
+                    query_status.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot issue : snapshot.getChildren()) {
+                                Log.d("rsc","hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+                                Intent intent = new Intent(MyPageActivity.this, MyPageRideActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

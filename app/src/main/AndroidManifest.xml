@@ -32,6 +32,7 @@
         <activity android:name=".ResultSecondActivity" />
         <activity android:name=".ResultThirdActivity"/>
         <activity android:name=".MyPageActivity" />
+        <activity android:name=".MyPageRideActivity"/>
     </application>
 
 </manifest>
