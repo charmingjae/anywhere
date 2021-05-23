@@ -128,10 +128,11 @@ public class ReservationActivity extends AppCompatActivity {
                 result.put("end", busArrive);
                 result.put("phone", phone);
                 result.put("start", stopData);
+                result.put("status", "wait");
 
                 // firebase 정의
                 mDatabase = FirebaseDatabase.getInstance().getReference();
-                mDatabase.child("wait").push().setValue(result);
+                mDatabase.child("res").push().setValue(result);
 
                 checkDialog.dismiss();
 
