@@ -6,6 +6,23 @@
     <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:textColor="#7F7F7F" android:textSize="25dp" android:text="Review" android:layout_marginTop="40dp" android:textAlignment="center"/>
     <RatingBar android:layout_height="wrap_content" android:layout_width="wrap_content" android:progressTint="#FFEB3B" android:rating="1" android:numStars="5" android:layout_gravity="center" style="@style/Widget.AppCompat.RatingBar" android:id="@+id/reviewScore"/>
     <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:textColor="#7F7F7F" android:textSize="25dp" android:text="Comment" android:layout_marginTop="40dp" android:textAlignment="center"/>
-    <EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:textColor="@color/black" android:textSize="30dp" android:textAlignment="center" android:hint="write comment"/>
-    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="40dp" android:text="Review" android:layout_marginTop="40dp" android:layout_gravity="center" android:backgroundTint="#F6BD60"/>
+
+    <EditText
+        android:id="@+id/txtComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="write comment"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/btnReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#F6BD60"
+        android:text="Review"
+        android:textSize="40dp" />
 </LinearLayout>
