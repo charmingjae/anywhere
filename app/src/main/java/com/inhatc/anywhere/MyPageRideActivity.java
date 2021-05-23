@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,10 @@ public class MyPageRideActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     String phone;
 
+    TextView txtBus;
+    TextView txtDepart;
+    TextView txtArrive;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,23 +38,45 @@ public class MyPageRideActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reservation_ride_form);
         mAuth = FirebaseAuth.getInstance();
 
+        txtBus = (TextView)findViewById(R.id.txtBus);
+        txtDepart = (TextView)findViewById(R.id.txtDepart);
+        txtArrive = (TextView)findViewById(R.id.txtArrive);
+
+        String busnum = getIntent().getStringExtra("busnum");
+        String depart = getIntent().getStringExtra("depart");
+        String arrive = getIntent().getStringExtra("arrive");
+
+        Log.i("Get Extras : ", busnum);
+        Log.i("Get Extras : ", depart);
+        Log.i("Get Extras : ", arrive);
+
+        txtBus.setText(busnum);
+        txtDepart.setText(depart);
+        txtArrive.setText(arrive);
+
         rideStatusChange();
     }
 
     private void rideStatusChange() {
         phone = mAuth.getCurrentUser().getEmail();
         phone = phone.substring(0, 11);
+        Log.i("RIDE NOW PHONE : ", phone);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         Log.d("","start log");
-        Query query = reference.child("res").orderByChild("phone").equalTo("dd");
+        Query query = reference.child("res").orderByChild("phone").equalTo(phone);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 for (DataSnapshot issue : snapshot.getChildren()) {
-                    Log.d("","hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh1323513");
-                    Log.i("ISSUE : ", issue.getRef().toString());
+                    Log.d("","CHANGEDCHANGEDCHANGEDCHANGEDCHANGEDCHANGEDCHANGEDCHANGEDCHANGED");
+
+                    Log.i("keyssssss", issue.child("status").getValue().toString());
+                    if(issue.child("status").getValue().toString().equals("out")){
+                        Intent intent = new Intent(MyPageRideActivity.this, ReviewActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
 //                    String status = issue.getRef().child("status").toString();
 //                    Log.d("",status);
 //                    if (status.equals("ride")){

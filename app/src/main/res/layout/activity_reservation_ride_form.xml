@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
-        android:text="Platform"
+        android:text="Drop Off"
         android:textColor="#7f7f7f"
         android:textSize="25dp" />
 

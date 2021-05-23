@@ -60,7 +60,7 @@ public class MyPageActivity extends AppCompatActivity {
         txtDepart.setText(depart);
         txtArrive.setText(arrive);
 
-        rideStatusChange();
+        rideStatusChange(bus , depart, arrive);
 
         // Minjae
         // dialog
@@ -126,9 +126,10 @@ public class MyPageActivity extends AppCompatActivity {
         });
     }
 
-    private void rideStatusChange() {
+    private void rideStatusChange(String bus, String depart, String arrive) {
         phone = mAuth.getCurrentUser().getEmail();
         phone = phone.substring(0, 11);
+        Log.i("NOW PHONE : ", phone);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         Log.d("rsc","start log");
@@ -137,25 +138,36 @@ public class MyPageActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot issue : snapshot.getChildren()) {
+                    Log.i("IN THE NOW PHONE : ", phone);
                     Log.d("rsc","hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh1323513");
-                    Query query_status = issue.getRef().child("status").equalTo("wait");
-                    query_status.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot issue : snapshot.getChildren()) {
-                                Log.d("rsc","hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
-                                Intent intent = new Intent(MyPageActivity.this, MyPageRideActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
 
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                    Log.i("keyssssss", issue.child("status").getValue().toString());
+                    if(issue.child("status").getValue().toString().equals("ride")){
+                        Intent intent = new Intent(MyPageActivity.this, MyPageRideActivity.class);
+                        intent.putExtra("busnum", bus);
+                        intent.putExtra("depart", depart);
+                        intent.putExtra("arrive", arrive);
+                        startActivity(intent);
+                        finish();
+                    }
+//                    Query query_status = issue.getRef().child("status").equalTo("wait");
+//                    query_status.addValueEventListener(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                            for (DataSnapshot issue : snapshot.getChildren()) {
+//                                Log.d("rsc","hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+//                                Intent intent = new Intent(MyPageActivity.this, MyPageRideActivity.class);
+//                                startActivity(intent);
+//                                finish();
+//                            }
+//
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError error) {
+//
+//                        }
+//                    });
                 }
             }
 
