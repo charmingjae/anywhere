@@ -34,6 +34,7 @@
         <activity android:name=".ResultThirdActivity"/>
         <activity android:name=".MyPageActivity" />
         <activity android:name=".ReviewActivity"/>
+        <activity android:name=".MyPageRideActivity"/>
     </application>
 
 </manifest>
