@@ -3,6 +3,7 @@ package com.inhatc.anywhere;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -10,20 +11,33 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+
 public class ReservationActivity extends AppCompatActivity {
 
     Button doReservation;
+    private FirebaseAuth mAuth;
 
 
     //sm
     String stopData;
     String busData;
     String busArrive;
+    String phone;
     Dialog checkDialog;
+
+    // initialize DB
+    DatabaseReference mDatabase;
+
 
 
     @Override
@@ -34,6 +48,10 @@ public class ReservationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rservation);
 
         doReservation = (Button)findViewById(R.id.btnReservation);
+        mAuth = FirebaseAuth.getInstance();
+        /*Toast.makeText(getApplicationContext(),
+                mAuth.getCurrentUser().getEmail(),
+                Toast.LENGTH_LONG).show();*/
 
         //sm
         TextView txtBusStop = (TextView)findViewById(R.id.txtBusStop);
@@ -99,6 +117,22 @@ public class ReservationActivity extends AppCompatActivity {
         checkDialog.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //상세정보로 이동하기 전 데이터베이스의 예약 데이터 저장
+                //보낼 예약 데이터 중 사용자 정보
+                phone = mAuth.getCurrentUser().getEmail();
+                phone = phone.substring(0,11);
+                HashMap result = new HashMap<>();
+                result.put("end", busArrive);
+                result.put("phone", phone);
+                result.put("start", stopData);
+
+                // firebase 정의
+                mDatabase = FirebaseDatabase.getInstance().getReference();
+                mDatabase.child("wait").push().setValue(result);
+
+                checkDialog.dismiss();
+
                 // 상세정보로 이동한다.
                 Intent intent = new Intent(ReservationActivity.this, MyPageActivity.class);
                 intent.putExtra("bus",busData);
