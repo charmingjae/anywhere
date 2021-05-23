@@ -41,32 +41,47 @@ public class MyPageRideActivity extends AppCompatActivity {
         phone = phone.substring(0, 11);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-
-        Query query = reference.child("res").orderByChild("phone").equalTo(phone);
+        Log.d("","start log");
+        Query query = reference.child("res").orderByChild("phone").equalTo("dd");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        Query query_status = issue.getRef().child("status").equalTo("out");
-                        query_status.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.exists()) {
-                                    Intent intent = new Intent(MyPageRideActivity.this, ReviewActivity.class);
-                                    startActivity(intent);
-                                    finish();
+
+                for (DataSnapshot issue : snapshot.getChildren()) {
+                    Log.d("","hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh1323513");
+                    Log.i("ISSUE : ", issue.getRef().toString());
+//                    String status = issue.getRef().child("status").toString();
+//                    Log.d("",status);
+//                    if (status.equals("ride")){
+//                        Log.d("","hi hi~");
+//                        Intent intent = new Intent(MyPageRideActivity.this, ReviewActivity.class);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+                    /*
+                    Query query_status = issue.getRef().child("status").equalTo("out");
+                    query_status.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            for (DataSnapshot issue : snapshot.getChildren()) {
+                                Log.d("","hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+                                Intent intent = new Intent(MyPageRideActivity.this, ReviewActivity.class);
+                                startActivity(intent);
+                                finish();
+
                                 }
-                            }//myAdapter.notifyDataSetChanged();
+                            }
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
 
                             }
                         });
+
+                     */
                     }
                 }
-            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
