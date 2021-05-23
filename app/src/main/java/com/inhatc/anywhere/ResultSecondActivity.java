@@ -144,7 +144,7 @@ public class ResultSecondActivity extends AppCompatActivity {
                         list.add(new SampleData(name,""));
 
                     }
-                }
+                }myAdapter.notifyDataSetChanged();
             }
 
             @Override
