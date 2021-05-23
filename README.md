@@ -4,15 +4,44 @@
 
 <br/>
 
-## 🍀 Team
+## 🍀 Team :: 컴정스토리 ( aka CS Story )
 
-👩🏻‍✈️ (Captain)
+👩🏻‍✈️ [Leader] [한선희](https://github.com/tjshee39) : Front-End, PM  
+👩🏻‍💻 [이샘미](https://github.com/saemmilee) : Back-End, DBA  
+👩🏻‍💻 [홍주희](https://github.com/wngml317) : Back-End, DBA  
+👨🏻‍💻 [송 휘](https://github.com/songhwee1) : Back-End   
+👨🏻‍💻 [차민재](https://github.com/charmingjae) : Front-End, Sub-PM   
+
+<br/>  
+
+## 🤝 Partner Track
+
+### [AutoCrypt](https://autocrypt.co.kr/)
+> A company that strives to communicate with a safe future car transportation system.
+
+#### Applied Solutions
+- [FMS(Fleet Management System)](https://autocrypt.co.kr/product-fms)  
+    1. Data Management
+        - Secure data management by storing driver, passenger information and travel details in the blockchain
+    2. Real-time scheduled calls
+        - Real-time low-floor bus bookings based on the needs of the weak
+    3. Vehicle Monitoring
+        - Based on real-time location information, the location and travel path of the vehicle are checked on the map
+
+
+<br/>  
 
 ## 👨🏻‍💻 Overview  
-The use of the transport system by the weak should be guaranteed by rights, not welfare.  
+    The use of the transport system by the weak should be guaranteed by rights, not welfare.  
 As time goes by, the number of vulnerable people is increasing, but people's perceptions and systems are not improving. The low-floor bus system is designed and operated for the weak in transportation, but the disabled person and weak people are not comfortably using the bus.  
 The low-floor bus reservation system currently in place allows reservations by phone or text, but such services are not available to the weak with language and speech impairments.  
 To compensate for these inconveniences, our team planned a simple and intuitive low-floor bus reservation system using the application.
+
+
+<br/>
+
+## ✈️ TO BE
+Protecting the use of public transportation by the disadvantaged with rights, not welfare, want to tear down the <b>"Barrier"</b> in front of the weak to <b>"Free"</b>. The use of the application makes it easy for the underprivileged to book low-floor buses and allows bus drivers to check their booking information intuitively and unhindered. Furthermore, we strive to improve awareness of the underprivileged and create an equal world.
 
 
 <br/>
@@ -37,70 +66,4 @@ Firebase
 <br/>
 
 
-## 🏃‍♂️ Getting Started
-
-~~~bash
-
-python3 app.py
-
-~~~  
-
-<br/> 
-
-
-## 📖 Comment  
-
-> Need 'Telegram bot' Access Token and link point  
-
-본 프로젝트에서는 Python3로 작성 된 블록체인에 저장 되어 있는 이미지 객체를 텔레그램으로 전송합니다.  
-전송 방법은 Telegram에서 제공하는 [Bot API](https://core.telegram.org/bots)를 사용해서 전송하기 때문에, 개별적인 [Access Token](https://gabrielkim.tistory.com/entry/Telegram-Bot-Token-%EB%B0%8F-Chat-Id-%EC%96%BB%EA%B8%B0)과 백앤드와 Telegram을 연결하는 파일(Link point)가 필요합니다.  
-
-<br/>
-
-> Syntax
-
-
-1. import telegram and set Bot auth
-~~~python
-
-import telegram
-bot = telegram.Bot(token='your token')
-token = 'your token'
-chat_id = your chat_id
-
-~~~
-
-
-2. How to send img
-
-~~~python
-
-from io import BytesIO
-from PIL import Image
-
-# Load encoded file using pickle module
-convtImg = pickle.loads(base64.b64decode(convImg))
-converted_img = Image.fromarray(convtImg, 'RGB')
-
-# Save img object into created BytesIO container
-bio = BytesIO()
-bio.name = str(uuid.uuid4())
-converted_img.save(bio, 'JPEG')
-bio.seek(0)
-
-# Send Bytes object to telegram
-bot.sendPhoto(chat_id=chat_id, photo=bio)
-
-~~~
-
-<br />  
-
-> Methodology
-
-1. Get block filtered by timestamp
-
-~~~python
-
-list(filter(lambda x: x['timestamp'] > time1 and x['timestamp'] < time2, blockchain.chain))
-
-~~~
+![logo](https://user-images.githubusercontent.com/54883521/119247419-37422d00-bbc4-11eb-911e-8ab2854dc640.png)
